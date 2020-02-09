@@ -16,6 +16,11 @@ class ProfileTestClass(TestCase):
         profiles=Profile.objects.all()
         self.assertTrue(len(profiles)>0)
 
+    def test_delete_method(self):
+        self.trevor.save_profile()
+        my_obj = Profile.objects.get(profile_photo='image')
+        my_obj.delete()
+
 class ImageTestClass(TestCase):
     def setUp(self):
 
