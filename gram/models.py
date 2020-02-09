@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 
 # Create your models here.
 
@@ -11,6 +12,9 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+
+    def __str__(self):
+        return self.profile_photo
 
     
 
@@ -32,6 +36,10 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def show_images(cls):
+        return cls.objects.order_by('post_time')
 
 
 
