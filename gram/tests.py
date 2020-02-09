@@ -31,3 +31,9 @@ class ImageTestClass(TestCase):
         self.post.save_image()
         images=Image.objects.all()
         self.assertTrue(len(images)>0)
+
+    def test_delete_method(self):
+        self.post.save_image()
+        my_obj = Image.objects.get(image='image')
+        my_obj.delete()
+       
