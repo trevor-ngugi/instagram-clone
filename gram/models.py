@@ -20,7 +20,7 @@ class Profile(models.Model):
 
 
 class Image(models.Model):
-    image=models.CharField(max_length=30)
+    image=models.ImageField(upload_to='posts/')
     image_name=models.CharField(max_length=30)
     image_caption=models.CharField(max_length=30,blank=True)
     profile=models.ForeignKey(Profile)
