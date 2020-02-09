@@ -26,3 +26,8 @@ class ImageTestClass(TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.post,Image))
+
+    def test_save_method(self):
+        self.post.save_image()
+        images=Image.objects.all()
+        self.assertTrue(len(images)>0)
