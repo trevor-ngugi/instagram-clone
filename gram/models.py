@@ -9,6 +9,8 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
+    
+
 
 class Image(models.Model):
     image=models.CharField(max_length=30)
