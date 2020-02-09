@@ -7,15 +7,22 @@
     {%for post in posts %}
     <div class="card">
         <div class="card-body">
-          <h4 class="card-title">{{post.image_name}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">{{post.time}}</h6>
-          <p class="card-text">
-            {{post.image_caption}}
-          </p>
-          <a href="#!" class="card-link">{{post.image_name}}</a>
-          <a href="#!" class="card-link">{{post.image_name}}</a>
+            <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
+            <h5 class="card-title">{{post.image_name}}</h5>
         </div>
-      </div>
+    </div>
+    <img src="/images/pathToYourImage.png" alt="Card image cap">
+    <div class="card">
+        <div class="card-body">
+            <button type="submit"><i class="fa fa-heart-o" style="color: black;"></i></i></button>
+            <button type="submit"><i class="fa fa-comment-o" style="color: black;"></i></i></button>
+            <button type="submit"><i class="fa fa-location-arrow" style="color: black;"></i></button>
+            <p class="card-text">20 likes</p>
+            <p class="card-text">{{post.profile}}: {{post.image_caption}}</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{post.post_time}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Add a comment ...</h6>
+        </div>
+    </div>
     {% empty %}
     <div class="card">
         <img class="card-img-top" src='' alt="image">
@@ -23,5 +30,6 @@
     </div>
     {% endfor %}
 </div>
+
 
 {% endblock %}
