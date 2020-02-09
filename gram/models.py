@@ -41,6 +41,11 @@ class Image(models.Model):
     def show_images(cls):
         return cls.objects.order_by('post_time')
 
+    @classmethod
+    def search_profile(cls,search_term):
+        profiles=cls.objects.filter(profile__icontains=search_term)
+        return profiles
+
 
 
 
