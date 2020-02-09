@@ -3,5 +3,25 @@
 {% block content %}
 {{block.super}}
 <h1>landing page for ig </h1>
+<div class="container">
+    {%for post in posts %}
+    <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">{{post.image_name}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{post.time}}</h6>
+          <p class="card-text">
+            {{post.image_caption}}
+          </p>
+          <a href="#!" class="card-link">{{post.image_name}}</a>
+          <a href="#!" class="card-link">{{post.image_name}}</a>
+        </div>
+      </div>
+    {% empty %}
+    <div class="card">
+        <img class="card-img-top" src='' alt="image">
+        <div class="card-body"> no postsss</div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
