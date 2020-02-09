@@ -6,6 +6,9 @@ class Profile(models.Model):
     profile_photo=models.CharField(max_length=30)
     bio=models.CharField(max_length=30)
 
+    def save_profile(self):
+        self.save()
+
 
 class Image(models.Model):
     image=models.CharField(max_length=30)
