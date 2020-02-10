@@ -5,7 +5,7 @@ import datetime as dt
 
 class Profile(models.Model):
     profile_username=models.CharField(max_length=30)
-    profile_photo=models.ImageField(upload_to='profile/')
+    profile_pic=models.ImageField(upload_to='profile/')
     bio=models.CharField(max_length=30,blank=True)
     no_posts=models.IntegerField()
     followers=models.IntegerField()
@@ -18,7 +18,7 @@ class Profile(models.Model):
         self.delete()
 
     def __str__(self):
-        return self.profile_photo
+        return self.profile_username
 
     
 
