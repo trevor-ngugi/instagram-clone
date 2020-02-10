@@ -4,8 +4,12 @@ import datetime as dt
 # Create your models here.
 
 class Profile(models.Model):
-    profile_photo=models.CharField(max_length=30,blank=True)
+    profile_username=models.CharField(max_length=30)
+    profile_photo=models.ImageField(upload_to='profile/')
     bio=models.CharField(max_length=30,blank=True)
+    no_posts=models.IntegerField()
+    followers=models.IntegerField()
+    following=models.IntegerField()
 
     def save_profile(self):
         self.save()
