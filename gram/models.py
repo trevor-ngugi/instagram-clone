@@ -1,12 +1,14 @@
 from django.db import models
 import datetime as dt
+from django.contrib.auth.models import User
+from tinymce.models import HTMLField
 
 # Create your models here.
 
 class Profile(models.Model):
     profile_username=models.CharField(max_length=30)
     profile_pic=models.ImageField(upload_to='profile/')
-    bio=models.CharField(max_length=30,blank=True)
+    bio=HTMLField()
     no_posts=models.IntegerField()
     followers=models.IntegerField()
     following=models.IntegerField()
@@ -26,8 +28,9 @@ class Profile(models.Model):
 class Image(models.Model):
     image=models.ImageField(upload_to='posts/')
     image_name=models.CharField(max_length=30)
-    image_caption=models.CharField(max_length=30,blank=True)
+    image_caption=HTMLField()
     profile=models.ForeignKey(Profile)
+    user=models.ForeignKey(User)
     likes=models.IntegerField()
     comments=models.CharField(max_length=30,blank=True)
     post_time=models.DateTimeField(auto_now_add=True)

@@ -1,0 +1,24 @@
+{%extends 'ig/base.html'%}
+
+ {% block content %}
+ 
+ <div class="container">
+        <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+        <div class="card">
+                <div class="card-body">
+                    <button type="submit"><i class="fa fa-heart-o" style="color: black;"></i></i></button>
+                    <button type="submit"><i class="fa fa-comment-o" style="color: black;"></i></i></button>
+                    <button type="submit"><i class="fa fa-location-arrow" style="color: black;"></i></button>
+                    <p class="card-text">20 likes</p>
+                    <p class="card-text"> {% autoescape on %}
+                            {{image.image_caption|safe}}
+                           {% endautoescape %}</p>
+                    <h6 class="card-subtitle mb-2 text-muted">{{image.post_time}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Add a comment ...</h6>
+                </div>
+            </div>
+
+
+ </div>
+
+ {% endblock %}

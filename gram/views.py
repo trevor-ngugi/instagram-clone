@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from.models import Image
 from django.contrib.auth.decorators import login_required
+from .forms import PostForm
+
 
 # Create your views here.
-#@login_required(login_url='/accounts/login/')   add login required
+#@login_required(login_url='/accounts/login/')   
 def home(request):
     posts=Image.show_images()
     return render(request,'ig/home.html',{'posts':posts})
@@ -18,3 +20,20 @@ def search_profile(request):
     else:
         message='you havent searched for any thing'
         return render(request,'ig/search.html',{'message':message})
+
+def new_post(request):
+    current_user = request.user
+
+    if request.method == "POST":
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            post = comment_form.save(commit=False)
+            post.user = current_user
+            post.save()
+            return redirect("home")
+
+    else:
+        form = PostForm()
+
+    return render(request, "ig/new_post.html", context={"form":form})

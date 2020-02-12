@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gram.apps.GramConfig',
     'bootstrap3',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
