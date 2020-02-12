@@ -23,6 +23,8 @@ class Profile(models.Model):
 
     
 
+    
+
 
 class Image(models.Model):
     image=models.ImageField(upload_to='posts/')
@@ -49,7 +51,7 @@ class Image(models.Model):
 
     @classmethod
     def search_profile(cls,search_term):
-        profiles=cls.objects.filter(profile__profile_photo__icontains=search_term)
+        profiles=cls.objects.filter(profile__profile_username__icontains=search_term)
         return profiles
 
 
