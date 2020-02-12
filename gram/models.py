@@ -1,5 +1,4 @@
 from django.db import models
-import datetime as dt
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
@@ -7,11 +6,11 @@ from tinymce.models import HTMLField
 
 class Profile(models.Model):
     profile_username=models.CharField(max_length=30)
-    profile_pic=models.ImageField(upload_to='profile/')
-    bio=HTMLField()
-    no_posts=models.IntegerField()
-    followers=models.IntegerField()
-    following=models.IntegerField()
+    profile_pic=models.ImageField(upload_to='profile/',blank=True)
+    bio=HTMLField(blank=True)
+    no_posts=models.IntegerField(blank=True)
+    followers=models.IntegerField(blank=True)
+    following=models.IntegerField(blank=True)
 
     def save_profile(self):
         self.save()
@@ -27,11 +26,11 @@ class Profile(models.Model):
 
 class Image(models.Model):
     image=models.ImageField(upload_to='posts/')
-    image_name=models.CharField(max_length=30)
-    image_caption=HTMLField()
+    image_name=models.CharField(max_length=30,blank=True, default="Post")
+    image_caption=HTMLField(blank=True)
     profile=models.ForeignKey(Profile)
     user=models.ForeignKey(User)
-    likes=models.IntegerField()
+    likes=models.IntegerField(default=0)
     comments=models.CharField(max_length=30,blank=True)
     post_time=models.DateTimeField(auto_now_add=True)
 
