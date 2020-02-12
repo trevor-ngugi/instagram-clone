@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from.models import Image
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+#@login_required(login_url='/accounts/login/')   add login required
 def home(request):
     posts=Image.show_images()
     return render(request,'ig/home.html',{'posts':posts})
