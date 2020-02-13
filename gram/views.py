@@ -7,11 +7,11 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 
 
 # Create your views here.
-#@login_required(login_url='/accounts/login/')   
+@login_required(login_url='/accounts/login/')  
 def home(request):
     posts=Image.show_images()
     return render(request,'ig/home.html',{'posts':posts})
-
+@login_required
 def search_profile(request):
     if 'profile' in request.GET and request.GET["profile"]:
         search_term=request.GET.get("profile")
@@ -22,7 +22,7 @@ def search_profile(request):
     else:
         message='you havent searched for any thing'
         return render(request,'ig/search.html',{'message':message})
-
+@login_required
 def new_post(request):
     current_user = request.user
 
