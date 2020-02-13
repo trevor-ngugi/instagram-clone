@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Image
+from .models import Image,User,Profile
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
@@ -27,10 +27,10 @@ def new_post(request):
     current_user = request.user
 
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
 
         if form.is_valid():
-            post = comment_form.save(commit=False)
+            post = form.save(commit=False)
             post.user = current_user
             post.save()
             return redirect("home")
@@ -39,3 +39,9 @@ def new_post(request):
         form = PostForm()
 
     return render(request, "ig/new_post.html", context={"form":form})
+@login_required
+def profile(request, id):
+    user = User.objects.get(id=id)
+    profile = Profile.objects.get(id=id)
+    posts = Post.objects.filter(profile__id=id)[::-1]
+    return render(request, "ig/profile.html", context={"user":user,"profile":profile,"posts":posts})
